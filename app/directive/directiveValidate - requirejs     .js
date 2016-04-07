@@ -646,7 +646,7 @@ function createPath(str) {
 }
 
 function isEmpty(str) {
-    return (str === '' || str === '? undefined:undefined ?') ? null : str;
+    return (str === '' || str === '? undefined:undefined ?'||str=="?") ? null : str;
 }
 
 function deleteComma(str) {
