@@ -676,7 +676,8 @@ function setPass() {
     var len = $('input');
     var arrPass = [], arrId = [];
     for (var i = 0; i < len.length; i++) {
-        if ((len[i].id.indexOf('pass') > -1 || len[i].id.indexOf('Pass') > -1) && len[i].value != "") {
+        if ((len[i].id.indexOf('pass') > -1 || len[i].id.indexOf('Pass') > -1) && len[i].value != ""
+            && len[i].id.indexOf('old') == -1) {
             arrPass.push(len[i].value);
             arrId.push(len[i].id);
         }
@@ -685,7 +686,7 @@ function setPass() {
         if (arrPass[0] != arrPass[1]) {
             return null;
         } else {
-            for (i in arrId) {
+            for (i = 0; i < arrId.length; i++) {
                 $('#' + arrId[i]).removeClass('inputError');
                 $('#1' + arrId[i]).html('');
             }
