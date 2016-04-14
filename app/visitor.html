@@ -10,7 +10,7 @@
 </head>
 <body ng-controller="myCtrl">
 <header class="header_loginPage clearfix"></header>
-<div class="container visitor_page login_page clearfix">
+<div class="container visitor_page login_page clearfix" id="Total">
     <form class="form" role="form" name="loginForm">
         <ul>
             <li class="company_number user_name_loginPage">
@@ -30,7 +30,7 @@
                        placeholder="email" valid-directive="isEmpty,isEmail"/>
             </li>
             <li class="btn_login_wrapper clearfix">
-                <button valid-directive="click" click = "register" class="button_loginPage">register</button>
+                <button valid-directive="click" click = "register" for="#Total" class="button_loginPage">register</button>
             </li>
         </ul>
 

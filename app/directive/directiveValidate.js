@@ -35,7 +35,7 @@ app.directive('validDirective', function () {
             $(elem[0].parentElement).append('<div class="error" id=1' + elem[0].id + '></div>');
             //-------------------------------- عمل کردن دایرکتیو برای کلیک شدن یا رد شدن از المنت --
             elem.bind(((scope.func == 'click') ? 'click' : 'blur'), function () {
-                var selector = 'input,select,textarea';//----  تگ های استفاده شده در صفحه  ----
+                var selector = attr['for']+' input,select,textarea';//----  تگ های استفاده شده در صفحه  ----
                 if (scope.func == 'click') {
                     var sub = submit($(selector), elem, true),
                         checkErr = sub.checkErr;

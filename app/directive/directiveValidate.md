@@ -18,7 +18,7 @@
                                                  
      3.              اعتبار سنجی هم بصورت تکی انجام شده و هم بصورت یکجا که در صورت یکجا باید در دکمه سابمیت به این شکل 
                                                       
-                       اضافه شود valid-directive="click" click="function for after valid"
+                       اضافه شود valid-directive="click" for="selector for valid content EXM:'#myForm'" click="function for after valid"
                                      
      4.              بعد از اعتبارسنجی تمام تگ هایی که دایرکتیو در انها صدا زده شده باشد ابجکتی از ولیو انها تشکیل میشود و به تابع فرستاده شده از تگ 
                                           
