@@ -1,7 +1,7 @@
 //create by mohammad-rahmati 1394/10/10
 var app = angular.module('app', []);
 app.controller('myCtrl', function ($scope) {
-    $scope.register= function (data) {
+    $scope.register = function (data) {
         console.log(data);
     }
 });
@@ -35,7 +35,7 @@ app.directive('validDirective', function () {
             $(elem[0].parentElement).append('<div class="error" id=1' + elem[0].id + '></div>');
             //-------------------------------- عمل کردن دایرکتیو برای کلیک شدن یا رد شدن از المنت --
             elem.bind(((scope.func == 'click') ? 'click' : 'blur'), function () {
-                var selector = attr['for']+' input,select,textarea';//----  تگ های استفاده شده در صفحه  ----
+                var selector = attr['for'] + ' input,select,textarea';//----  تگ های استفاده شده در صفحه  ----
                 if (scope.func == 'click') {
                     var sub = submit($(selector), elem, true),
                         checkErr = sub.checkErr;
@@ -61,7 +61,7 @@ app.directive('validDirective', function () {
         var arr_value = {}, files = [];
         for (var i = 0; i < selector.length; i++) {
             if (selector[i].attributes['file-input'] == undefined) {
-                if (selector[i].attributes['valid-directive'] && selector[i].attributes['valid-directive'].value != '') {
+                if (selector[i].attributes['valid-directive']) {
                     var func = selector[i].attributes['valid-directive'].value;
                     if (blurValid(selector[i].id, selector[i].value, func, elem)) {
                         arr_value[selector[i].id] = selector[i].attributes['price'] ? deleteComma(selector[i].value) : selector[i].value;
@@ -89,19 +89,19 @@ app.directive('validDirective', function () {
     function blurValid(id, value, func) {
         if (func != '') {
             var arr_func = func.split(',');
-        }
-        for (var i in arr_func) {
-            //-----------------------------------------------------------------------------------
-            if (arr_func[i] != 'click' && !validate[arr_func[i]](value)) {
-                $('#' + id).addClass('inputError');
-                $('#1' + id).html('<p>' + msg.form[arr_func[i]] + '</p>');
-                return false;
-            }
-            else {
-                $('#' + id).removeClass('inputError');
-                $('#1' + id).html('');
-                if (i == arr_func.length - 1) {
-                    return true;
+            for (var i in arr_func) {
+                //-----------------------------------------------------------------------------------
+                if (arr_func[i] != 'click' && !validate[arr_func[i]](value)) {
+                    $('#' + id).addClass('inputError');
+                    $('#1' + id).html('<p>' + msg.form[arr_func[i]] + '</p>');
+                    return false;
+                }
+                else {
+                    $('#' + id).removeClass('inputError');
+                    $('#1' + id).html('');
+                    if (i == arr_func.length - 1) {
+                        return true;
+                    }
                 }
             }
         }
@@ -154,8 +154,8 @@ var msg = {
         allEmpty: 'پر کردن تمامی موارد الزامی است.',
         errorField: 'این ایتم در قالب تعریف شده نمی باشد.',
         isEmpty: 'Fill the field',//  'فیلد را پر نمایید.',
-        isUsername:'(a-z , 0-9) 4 chars',// 'حداقل 4  کاراکتر (a-z , 0-9)',
-        isEmail:'Enter your e-mail in correct format', //'ایمیل را با فرمت صحیح وارد نمایید.',
+        isUsername: '(a-z , 0-9) 4 chars',// 'حداقل 4  کاراکتر (a-z , 0-9)',
+        isEmail: 'Enter your e-mail in correct format', //'ایمیل را با فرمت صحیح وارد نمایید.',
         isPassword: 'not(@,#,$,%,^,&,...) 6 chars',
         setPass: 'It is not by repeating the same password',//'رمز عبور با تکرار آن یکسان نمی باشد.',
         number6: 'عدد شش رقمی صحیح وارد شود.',
@@ -651,7 +651,7 @@ function createPath(str) {
 }
 
 function isEmpty(str) {
-    return (str === '' || str === '? undefined:undefined ?'||str=="?") ? null : str;
+    return (str === '' || str === '? undefined:undefined ?' || str == "?") ? null : str;
 }
 
 function deleteComma(str) {
