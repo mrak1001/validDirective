@@ -32,7 +32,6 @@ app.directive('validDirective', function () {
             function: '=click'
         },
         link: function (scope, elem, attr) {
-            $(elem[0].parentElement).append('<div class="error" id=1' + elem[0].id + '></div>');
             //-------------------------------- عمل کردن دایرکتیو برای کلیک شدن یا رد شدن از المنت --
             elem.bind(((scope.func == 'click') ? 'click' : 'blur'), function () {
                 var selector = attr['for'] + ' input,select,textarea';//----  تگ های استفاده شده در صفحه  ----
@@ -93,7 +92,10 @@ app.directive('validDirective', function () {
                 //-----------------------------------------------------------------------------------
                 if (arr_func[i] != 'click' && !validate[arr_func[i]](value)) {
                     $('#' + id).addClass('inputError');
-                    $('#1' + id).html('<p>' + msg.form[arr_func[i]] + '</p>');
+                    if(!$('#1' + id)[0]) {
+                        $($('#'+id)[0].parentElement).append('<div class="error" id=1' +id + '></div>');
+                    }
+                    $('#1' + id).html('<p>' + msgCustom.form[arr_func[i]] + '</p>');
                     return false;
                 }
                 else {

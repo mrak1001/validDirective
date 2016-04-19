@@ -27,7 +27,6 @@ define(['app'], function (app) {
                 function: '=click'
             },
             link: function (scope, elem, attr) {
-                $(elem[0].parentElement).append('<div class="error" id=1' + elem[0].id + '></div>');
                 //-------------------------------- عمل کردن دایرکتیو برای کلیک شدن یا رد شدن از المنت --
                 elem.bind(((scope.func == 'click') ? 'click' : 'blur'), function () {
                     var selector = attr['for'] + ' input,select,textarea';//----  تگ های استفاده شده در صفحه  ----
@@ -81,26 +80,8 @@ define(['app'], function (app) {
         }
 
         //---------------------------------------- اعتبار سنجی تک تک فیلدها با رد شدن از آنها --------------------------
-        function blurValid(id, value, func) {
-            if (func != '') {
-                var arr_func = func.split(',');
-                for (var i in arr_func) {
-                    //-----------------------------------------------------------------------------------
-                    if (arr_func[i] != 'click' && !validate[arr_func[i]](value)) {
-                        $('#' + id).addClass('inputError');
-                        $('#1' + id).html('<p>' + msg.form[arr_func[i]] + '</p>');
-                        return false;
-                    }
-                    else {
-                        $('#' + id).removeClass('inputError');
-                        $('#1' + id).html('');
-                        if (i == arr_func.length - 1) {
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
+        $(elem[0].parentElement).append('<div class="error" id=1' + elem[0].id + '></div>');
+
     });
 
 
