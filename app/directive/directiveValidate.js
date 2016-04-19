@@ -95,7 +95,7 @@ app.directive('validDirective', function () {
                     if(!$('#1' + id)[0]) {
                         $($('#'+id)[0].parentElement).append('<div class="error" id=1' +id + '></div>');
                     }
-                    $('#1' + id).html('<p>' + msgCustom.form[arr_func[i]] + '</p>');
+                    $('#1' + id).html('<p>' + msg.form[arr_func[i]] + '</p>');
                     return false;
                 }
                 else {

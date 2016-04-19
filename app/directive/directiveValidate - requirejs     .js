@@ -80,7 +80,29 @@ define(['app'], function (app) {
         }
 
         //---------------------------------------- اعتبار سنجی تک تک فیلدها با رد شدن از آنها --------------------------
-        $(elem[0].parentElement).append('<div class="error" id=1' + elem[0].id + '></div>');
+        function blurValid(id, value, func) {
+            if (func != '') {
+                var arr_func = func.split(',');
+                for (var i in arr_func) {
+                    //-----------------------------------------------------------------------------------
+                    if (arr_func[i] != 'click' && !validate[arr_func[i]](value)) {
+                        $('#' + id).addClass('inputError');
+                        if(!$('#1' + id)[0]) {
+                            $($('#'+id)[0].parentElement).append('<div class="error" id=1' +id + '></div>');
+                        }
+                        $('#1' + id).html('<p>' + msg.form[arr_func[i]] + '</p>');
+                        return false;
+                    }
+                    else {
+                        $('#' + id).removeClass('inputError');
+                        $('#1' + id).html('');
+                        if (i == arr_func.length - 1) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
 
     });
 
