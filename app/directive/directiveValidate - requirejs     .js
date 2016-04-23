@@ -29,7 +29,7 @@ define(['app'], function (app) {
             link: function (scope, elem, attr) {
                 //-------------------------------- عمل کردن دایرکتیو برای کلیک شدن یا رد شدن از المنت --
                 elem.bind(((scope.func == 'click') ? 'click' : 'blur'), function () {
-                    var selector = attr['for'] + ' input,select,textarea';//----  تگ های استفاده شده در صفحه  ----
+                  var selector = attr['for']+' input,'+attr['for']+' select,'+attr['for']+' textarea';//تگهای استفاده شده
                     if (scope.func == 'click') {
                         var sub = submit($(selector), elem, true),
                             checkErr = sub.checkErr;
@@ -44,8 +44,17 @@ define(['app'], function (app) {
                 });
                 //---------- گذاشتن کاما به طور خودکار تمام فیلد هایی که اپشن ادیشنال دارند ----------------------------
                 scope.$watch('dir', function () {
-                    if (elem[0].attributes['price']) {
-                        scope.dir = createNum(scope.dir, elem[0].id);
+                             if (elem[0].attributes['price']) {
+                        if (scope.dir) {
+                            scope.dir = createPrice(scope.dir, elem[0].id);
+                        } else {
+                            $('#' + elem[0].id).text(createPrice(scope.dir ? scope.dir : $('#' + elem[0].id).text(), elem[0].id));//برای نمایش در تیبل
+                        }
+                    }
+                    if (elem[0].attributes['number']) { //با وجود این اتربیوت فقط عدد وارد میگردد
+                        if (scope.dir) {
+                            scope.dir = number(scope.dir, elem[0].id);
+                        }
                     }
                 })
             }

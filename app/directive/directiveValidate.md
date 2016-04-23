@@ -26,9 +26,12 @@
                         
      5.           اضافه کردن اتربیوت های لازم
                              
-                             1. price  : برای تگ هایی که مبلغ را نمایش میدهند 100,212,000   <input type="text" id="money" valid-directive="isEmpty" price/>
+                             1. price  : برای تگ هایی که مبلغ را نمایش میدهند 100,212,000   <input type="text" id="money" valid-directive="isEmpty" price/> or 
+                             <td id="price" valid-directive price>{{enyNumber}}</td>
                              
                              2. file-input : برای  بارگزاری فایل  <input type="file" id="myFile" valid-directive="" file-input/>
+                             
+                             3. number : فقط عدد وارد میشود   <input type="text" valid-directive number>
                              
      6.                                   
 
